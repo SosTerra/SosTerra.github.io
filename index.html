@@ -1,45 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Custom Form</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SosTerra - Request Composting Substrate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
 <body>
-    <form id="myForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+    <header class="header">
+        <h1>SosTerra</h1>
+    </header>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea><br><br>
+    <main class="container">
+        <h2>Request Composting Substrate</h2>
 
-        <button type="submit">Submit</button>
-    </form>
+        <form id="compostForm" name="submit-to-google-sheet">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-    <div id="responseMessage"></div> <script>
-        const form = document.getElementById('myForm');
-        const responseMessage = document.getElementById('responseMessage');
-        // *** PASTE YOUR WEB APP URL HERE ***
-        const scriptURL = 'https://script.google.com/macros/s/AKfycby93os6oF9KCkP4uFmxDDXerGWGJ6M2JpnBG2xRYD2rnygycmXWdVss87qHvdvoiTlSoA/exec';
+                <div class="form-group">
+                    <label for="organization">Organization/Company</label>
+                    <input type="text" id="organization" name="organization">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="farmSize">Farm Size (hectares)</label>
+                    <input type="number" id="farmSize" name="farmSize" step="any" min="0" placeholder="e.g., 1.5">
+                </div>
+
+                 <div class="form-group">
+                    <label for="compostingGoal">Composting Goal</label>
+                    <input type="text" id="compostingGoal" name="compostingGoal" placeholder="e.g., Soil improvement, waste management">
+                </div>
+
+                 <div class="form-group full-width">
+                    <label for="climateConditions">Climate Conditions</label>
+                    <input type="text" id="climateConditions" name="climateConditions" placeholder="Briefly describe temperature, humidity, rainfall">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="soilType">Soil Type</label>
+                    <select id="soilType" name="soilType">
+                        <option value="">-- Select --</option>
+                        <option value="Sandy">Sandy</option>
+                        <option value="Clay">Clay</option>
+                        <option value="Loamy">Loamy</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="compostingCapacity">Composting Capacity (kg?)</label>
+                    <input type="number" id="compostingCapacity" name="compostingCapacity" step="any" min="0" placeholder="Capacity of machine/system">
+                </div>
+
+                 <div class="form-group full-width">
+                    <label for="compostingEquipment">Composting Equipment</label>
+                    <input type="text" id="compostingEquipment" name="compostingEquipment" placeholder="e.g., Compost bins, turning tools, machinery">
+                </div>
+
+                <div class="form-group">
+                    <label for="manureType">Manure Type (if applicable)</label>
+                     <select id="manureType" name="manureType">
+                        <option value="">-- Select --</option>
+                        <option value="None">None</option>
+                        <option value="Cow">Cow</option>
+                        <option value="Poultry">Poultry (Chicken, etc.)</option>
+                        <option value="Horse">Horse</option>
+                        <option value="Sheep/Goat">Sheep/Goat</option>
+                        <option value="Pig">Pig</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="manureMoisture">Moisture Content of Manure</label>
+                    <select id="manureMoisture" name="manureMoisture">
+                        <option value="">-- Select --</option>
+                        <option value="Not Applicable">Not Applicable</option>
+                        <option value="Wet">Wet</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Dry">Dry</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="wasteCharacteristics">Other Available Organic Waste</label>
+                    <textarea id="wasteCharacteristics" name="wasteCharacteristics" rows="3" placeholder="e.g., Kitchen scraps, plant trimmings, crop residue"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Previous Composting Experience</label>
+                    <select id="experience" name="experience">
+                        <option value="">-- Select --</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Experienced">Experienced</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="desiredTime">Desired Composting Time (days)</label>
+                    <input type="text" id="desiredTime" name="desiredTime" placeholder="e.g., 30, 45, 60 days">
+                </div>
+
+                <div class="form-group">
+                    <label for="timeOfYear">Time of Year for Composting</label>
+                     <select id="timeOfYear" name="timeOfYear">
+                        <option value="">-- Select --</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Autumn/Fall">Autumn/Fall</option>
+                        <option value="Winter">Winter</option>
+                        <option value="Year-round">Year-round</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-button">Submit Request</button>
+                <div id="statusMessage"></div>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        </footer>
+
+    <script>
+        const form = document.getElementById('compostForm');
+        const statusMessage = document.getElementById('statusMessage');
+        // *** PASTE YOUR WEB APP URL HERE *** (Make sure it's inside the quotes)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyg1fd2r2OFI5aK8DAtEL_wQQtiH3G4UTD9-ICpUK58bzI6n12dPeksbI5oAgbK3_lQOQ/exec';
 
         form.addEventListener('submit', e => {
-            e.preventDefault(); // Prevent default form submit
-            responseMessage.textContent = 'Sending...'; // Provide feedback
+            e.preventDefault(); // Stop default form submission
+            statusMessage.textContent = 'Sending...';
+            statusMessage.style.display = 'block'; // Show status
+            statusMessage.style.color = '#333';
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true; // Disable button during submission
+
             fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => response.json()) // Expect JSON response from Apps Script
+                .then(response => response.json())
                 .then(data => {
-                    console.log('Success:', data);
+                    console.log('Response from script:', data);
                     if (data.result === 'success') {
-                        responseMessage.textContent = 'Thanks for your submission!';
+                        statusMessage.textContent = 'Success! Your request has been submitted.';
+                        statusMessage.style.color = '#28a745'; // Green for success
                         form.reset(); // Clear the form
                     } else {
-                        responseMessage.textContent = 'Error: Could not submit form. ' + (data.error || '');
+                        // Show the error from Apps Script if available
+                        statusMessage.textContent = 'Error: ' + (data.error || 'Could not submit form.');
+                        statusMessage.style.color = '#dc3545'; // Red for error
+                        console.error('Error sending data:', data.error);
                     }
                 })
                 .catch(error => {
-                    console.error('Error!', error.message);
-                    responseMessage.textContent = 'Error submitting form: ' + error.message;
+                    console.error('Fetch Error!', error);
+                    statusMessage.textContent = 'Error! Could not reach submission server. ' + error.message;
+                    statusMessage.style.color = '#dc3545'; // Red for error
+                })
+                .finally(() => {
+                   submitButton.disabled = false; // Re-enable button
+                   // Optionally hide the message after a few seconds
+                   // setTimeout(() => { statusMessage.style.display = 'none'; }, 5000);
                 });
         });
     </script>

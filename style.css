@@ -1,0 +1,166 @@
+/* Basic Reset & Font */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6; /* Light background */
+    padding-bottom: 50px; /* Space for footer or end of content */
+}
+
+/* Header Styling */
+.header {
+    background-color: #4a5d53; /* Dark greenish header background */
+    color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-weight: 300;
+    font-size: 3rem;
+    letter-spacing: 2px;
+}
+
+/* Container for the form */
+.container {
+    max-width: 900px; /* Wider container for grid */
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #4a5d53; /* Match header color */
+    font-weight: 500;
+}
+
+/* Form Grid Layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 1.5rem; /* Spacing between grid items */
+    margin-bottom: 1.5rem;
+}
+
+/* Allow some elements to span full width */
+.form-group.full-width {
+    grid-column: 1 / -1; /* Span across all columns */
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 0; /* Remove bottom margin as gap handles spacing */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Input, Select, Textarea Styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #6c8979; /* Focus color */
+    box-shadow: 0 0 0 2px rgba(74, 93, 83, 0.2); /* Focus ring */
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resize */
+    min-height: 80px;
+}
+
+/* Required Field Indicator */
+.required {
+    color: #dc3545; /* Red color for asterisk */
+    margin-left: 2px;
+}
+
+/* Form Actions (Button and Status) */
+.form-actions {
+    text-align: center;
+    margin-top: 1rem; /* Space above the button */
+}
+
+.submit-button {
+    background-color: #5cb85c; /* Green submit button */
+    color: white;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.submit-button:hover {
+    background-color: #4a9b4a; /* Darker green on hover */
+}
+
+.submit-button:active {
+     transform: scale(0.98); /* Slight press effect */
+}
+
+.submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+
+#statusMessage {
+    margin-top: 1rem;
+    font-weight: 500;
+    display: none; /* Hidden by default */
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+    }
+}
