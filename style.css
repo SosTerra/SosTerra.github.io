@@ -49,9 +49,11 @@ body {
 /* Form Grid Layout */
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    /* Adjust grid columns slightly if needed, or rely on element placement */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* More responsive grid */
     gap: 1.5rem; /* Spacing between grid items */
     margin-bottom: 1.5rem;
+    align-items: start; /* Align items to the start of the grid cell */
 }
 
 /* Allow some elements to span full width */
@@ -109,10 +111,19 @@ textarea {
     margin-left: 2px;
 }
 
+/* Styling for initially hidden 'Other' input containers */
+.other-input-container {
+    display: none; /* Hide these divs by default */
+    margin-top: -1rem; /* Adjust spacing slightly if needed when shown */
+    padding-top: 0.5rem; /* Add some padding when visible */
+}
+
+
 /* Form Actions (Button and Status) */
 .form-actions {
     text-align: center;
     margin-top: 1rem; /* Space above the button */
+    grid-column: 1 / -1; /* Ensure actions span full width if inside grid */
 }
 
 .submit-button {
@@ -152,10 +163,7 @@ textarea {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .form-grid {
-        grid-template-columns: 1fr; /* Stack columns on smaller screens */
-    }
-
+    /* Keep the responsive grid behavior */
     .container {
         padding: 1.5rem;
     }
@@ -163,4 +171,10 @@ textarea {
     .header h1 {
         font-size: 2.5rem;
     }
+}
+
+@media (max-width: 480px) {
+     .form-grid {
+         grid-template-columns: 1fr; /* Force single column on very small screens */
+     }
 }
